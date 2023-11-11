@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recetasapp/pages/home_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Myapp(),
+    home: HomePage(),
     debugShowCheckedModeBanner: false,
   ));
-}
-
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("data"),
-      ),
-    );
-  }
 }
