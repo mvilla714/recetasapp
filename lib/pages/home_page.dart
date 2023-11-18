@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recetasapp/widgets/recipe_item.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +12,22 @@ class _HomePageState extends State<HomePage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController urlImageController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  List<Map<String, dynamic>> recipes = [
+    {
+      "title": "Bandeja Paisa",
+      "descripcion":
+          "La bandeja paisa es uno de los platos más representativos de Colombia y la insignia de la gastronomía antioqueña, y es propio de esta región, Antioquia.Una de las características fundamentales de este plato es su abundancia, tanto en cantidad como en variedad de alimentos, de tal modo que la bandeja paisa completa solo cabe servirla en platos grandes llamados bandejas.",
+      "imageUrl":
+          "https://ichef.bbci.co.uk/news/640/cpsprodpb/134E3/production/_105057097_a226d870-cc5f-4043-9f4b-d452b75cc280.jpg",
+    },
+    {
+      "title": "Chancho al palo",
+      "descripcion":
+          "El chancho al palo es un potaje perteneciente a la zona norte del país, exactamente en Huaral. Este plato tradicional está compuesto principalmente de carne de cerdo cuya cocción es a fuego de leña de 4 a 5 horas.",
+      "imageUrl":
+          "https://www.agroperu.pe/wp-content/uploads/agroperu-informa_dia-chancho-al-palo-peru.jpg",
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -103,57 +120,34 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print(titleController.text);
-                      print(descriptionController.text);
-                      print(urlImageController.text);
+                      //print(titleController.text);
+                      //print(descriptionController.text);
+                      //print(urlImageController.text);
+                      recipes.add({
+                        "title": titleController.text,
+                        "descripcion": descriptionController.text,
+                        "imageUrl": urlImageController.text,
+                      });
+                      setState(() {});
                     },
-                    child: Text("PRINTEAR"),
+                    child: Text("Agregar"),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(18),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(5, 5),
-                            blurRadius: 10)
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(18.0),
-                          child: Image.network(
-                            "https://cafedelites.com/wp-content/uploads/2018/05/Jambalaya-IMAGE-3.jpg",
-                            height: 240,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Bandeja Paisa",
-                          maxLines: 2,
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "La bandeja paisa es uno de los platos más representativos de Colombia y la insignia de la gastronomía antioqueña, y es propio de esta región, Antioquia.Una de las características fundamentales de este plato es su abundancia, tanto en cantidad como en variedad de alimentos, de tal modo que la bandeja paisa completa solo cabe servirla en platos grandes llamados bandejas.",
-                            textAlign: TextAlign.justify,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        )
-                      ],
-                    ),
+
+                  ...recipes
+                      .map((e) => RecipeItem(
+                          title: e["title"],
+                          descripcion: e["descripcion"],
+                          imageUrl: e["imageUrl"]))
+                      .toList(),
+                  //RecipeItem(
+
+                  //),
+                  SizedBox(
+                    height: 15,
                   ),
+                  //RecipeItem(
+
+                  //),
                 ],
               ),
             ),
