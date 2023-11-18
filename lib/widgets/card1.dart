@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recetasapp/models/recipe_model.dart';
 
-class RecipeItem extends StatelessWidget {
-  String title;
-  String descripcion;
-  String imageUrl;
+class Card1 extends StatelessWidget {
+  RecipeModel recipeModel;
 
-  RecipeItem(
-      {required this.title, required this.descripcion, required this.imageUrl});
+  Card1({required this.recipeModel});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class RecipeItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(18.0),
             child: Image.network(
-              imageUrl,
+              recipeModel.image,
               height: 240,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -38,14 +36,14 @@ class RecipeItem extends StatelessWidget {
             height: 10,
           ),
           Text(
-            title,
+            recipeModel.title,
             maxLines: 2,
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              descripcion,
+              recipeModel.descripcion,
               textAlign: TextAlign.justify,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
