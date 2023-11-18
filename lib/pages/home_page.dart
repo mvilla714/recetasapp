@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recetasapp/models/recipe_model.dart';
+import 'package:recetasapp/pages/receta_page.dart';
 import 'package:recetasapp/widgets/card1.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,120 +49,132 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: EdgeInsets.all(8),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  TextField(
-                    style: TextStyle(color: Colors.blueGrey),
-                    controller: titleController,
-                    decoration: InputDecoration(
-                      hoverColor: Colors.yellow,
-                      contentPadding: EdgeInsets.all(0),
-                      hintText: "Ingrese el nombre de la receta",
-                      focusColor: Colors.amber,
-                      prefixIcon: Icon(Icons.title),
-                      filled: true,
-                      fillColor: Colors.grey.shade300,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                TextField(
+                  style: TextStyle(color: Colors.blueGrey),
+                  controller: titleController,
+                  decoration: InputDecoration(
+                    hoverColor: Colors.yellow,
+                    contentPadding: EdgeInsets.all(0),
+                    hintText: "Ingrese el nombre de la receta",
+                    focusColor: Colors.amber,
+                    prefixIcon: Icon(Icons.title),
+                    filled: true,
+                    fillColor: Colors.grey.shade300,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  TextField(
-                    style: TextStyle(color: Colors.blueGrey),
-                    controller: descriptionController,
-                    decoration: InputDecoration(
-                      hoverColor: Colors.yellow,
-                      contentPadding: EdgeInsets.all(0),
-                      hintText: "Ingrese la descripción de la receta",
-                      focusColor: Colors.amber,
-                      prefixIcon: Icon(Icons.description),
-                      filled: true,
-                      fillColor: Colors.grey.shade300,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                TextField(
+                  style: TextStyle(color: Colors.blueGrey),
+                  controller: descriptionController,
+                  decoration: InputDecoration(
+                    hoverColor: Colors.yellow,
+                    contentPadding: EdgeInsets.all(0),
+                    hintText: "Ingrese la descripción de la receta",
+                    focusColor: Colors.amber,
+                    prefixIcon: Icon(Icons.description),
+                    filled: true,
+                    fillColor: Colors.grey.shade300,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  TextField(
-                    style: TextStyle(color: Colors.blueGrey),
-                    controller: urlImageController,
-                    decoration: InputDecoration(
-                      hoverColor: Colors.yellow,
-                      contentPadding: EdgeInsets.all(0),
-                      hintText: "Ingrese el url de la imagen",
-                      focusColor: Colors.amber,
-                      prefixIcon: Icon(Icons.image),
-                      filled: true,
-                      fillColor: Colors.grey.shade300,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                TextField(
+                  style: TextStyle(color: Colors.blueGrey),
+                  controller: urlImageController,
+                  decoration: InputDecoration(
+                    hoverColor: Colors.yellow,
+                    contentPadding: EdgeInsets.all(0),
+                    hintText: "Ingrese el url de la imagen",
+                    focusColor: Colors.amber,
+                    prefixIcon: Icon(Icons.image),
+                    filled: true,
+                    fillColor: Colors.grey.shade300,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      //print(titleController.text);
-                      //print(descriptionController.text);
-                      //print(urlImageController.text);
-                      /*recipes.add({
-                        "title": titleController.text,
-                        "descripcion": descriptionController.text,
-                        "imageUrl": urlImageController.text,
-                      });*/
-                      RecipeModel _recipe = RecipeModel(
-                          title: titleController.text,
-                          descripcion: descriptionController.text,
-                          image: urlImageController.text);
-                      recipes.add(_recipe);
-                      titleController.clear();
-                      descriptionController.clear();
-                      urlImageController.clear();
-                      setState(() {});
-                    },
-                    child: Text("Agregar"),
-                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    //print(titleController.text);
+                    //print(descriptionController.text);
+                    //print(urlImageController.text);
+                    /*recipes.add({
+                      "title": titleController.text,
+                      "descripcion": descriptionController.text,
+                      "imageUrl": urlImageController.text,
+                    });*/
+                    RecipeModel _recipe = RecipeModel(
+                        title: titleController.text,
+                        descripcion: descriptionController.text,
+                        image: urlImageController.text);
+                    recipes.add(_recipe);
+                    titleController.clear();
+                    descriptionController.clear();
+                    urlImageController.clear();
+                    setState(() {});
+                  },
+                  child: Text("Agregar"),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: recipes.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecipePage(
+                                  recipeModel: recipes[index],
+                                ),
+                              ),
+                            );
+                          },
+                          child: Card1(recipeModel: recipes[index]),
+                        );
+                      }),
+                ),
 
-                  ...recipes
-                      .map((RecipeModel receta) => Card1(recipeModel: receta))
-                      .toList(),
-                  //RecipeItem(
+                /*...recipes
+                    .map((RecipeModel receta) => Card1(recipeModel: receta))
+                    .toList(),*/
 
-                  //),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  //RecipeItem(
-
-                  //),
-                ],
-              ),
+                SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
           ),
         ),
